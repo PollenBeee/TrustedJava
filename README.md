@@ -10,3 +10,5 @@ The language follows Java like syntax.
 Example:
 
 java -jar trustedJava(v1.0).jar "pack1/in.tj" "WorldOfObjects"
+
+To understand the Output Kindly look at the "Log Explanation.pdf", where we have explained a sample log output and the log details.
