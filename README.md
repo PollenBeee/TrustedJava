@@ -2,7 +2,7 @@ README.md
 
 To run the TrustedJava follow the following:
 
->> java -jar trustedJava(v1.0).jar <<input file>> <<main class name>>
+>> java -jar trustedJava(v1.0).jar <<"input file">> <<"main class name">>
 
 The sample input file is given in the folder pack1.
 The language follows Java like syntax. 
