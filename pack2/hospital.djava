@@ -1,0 +1,30 @@
+package pack2;
+
+import Doctor;
+import pack1.MedicalRecords;
+import pack1.PatientRecord;
+
+class Hospital<O>
+{
+	//if trusted and dynmaic owner is not specified by default the object will be owned by 'this'	
+	object doctors : Doctor<this>; 				
+	object mRecords : MedicalRecords<this>;
+	
+	function getDoctorsCopy() : PatientRecord
+	{	// returning local copy of the object
+		object pr : [?][this]PatientRecord<this>;
+		doctors -> pr; 					//whether doctors can access pr. (Before assigning declassified object)
+		return declassify pr;		
+	}
+		
+	function getOriginalPatientRecord() : PatientRecord //copy of stack value will be returned
+	{
+		object pr : [?][this]PatientRecord<this>;
+		doctors -> pr; 					//whether doctors can access pr. (Before assigning declassified object)
+		pr = mRecords.getRecords();		
+		doctors -> pr; 					//whether doctors can access pr. (After assigning declassified object)
+		mRecords neighbours doctors;
+		doctors -> pr; 					//whether doctors can access pr. (After Point<.> Neighbourhood)
+		return declassify pr;		
+	}	
+}

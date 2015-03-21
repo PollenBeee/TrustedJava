@@ -1,0 +1,49 @@
+package pack1;
+
+import pack2.Hospital;
+import pack2.Doctor;
+
+
+class PatientRecord<P>
+{
+}
+
+class MedicalRecords<M>
+{
+	object patientRecord : [this][this] PatientRecord <this>; 
+	function getRecords() : PatientRecord 
+	{
+		return declassify patientRecord;
+	}
+}
+
+class Researcher<R>
+{
+}
+
+class Hacker<H>
+{
+}
+
+class WorldOfObjects<world>
+{		
+	object hospital : [this][this]  Hospital <world>; 					//declare object hospital
+	
+	object researcher : [this][this] Researcher<world>; 				//declare object researcher
+	
+	object hacker : [this][this] Hacker<world>; 						//declare object hacker
+	
+	function main(args : Array(String)) : _
+	{		
+		//static owners-as-dominators access (peer-object access)
+		//researcher -> hospital;
+		//hospital -> researcher;
+		
+		object pr : PatientRecord<this>;
+		//pr = hospital.getDoctorsCopy();
+		pr = hospital.getOriginalPatientRecord();
+						
+	}
+}
+
+

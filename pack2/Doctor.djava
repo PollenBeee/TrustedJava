@@ -1,0 +1,6 @@
+package pack2;
+
+class Doctor<D>
+{
+	//object doctors : Doctor<this>;
+}
