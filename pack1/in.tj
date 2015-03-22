@@ -36,13 +36,16 @@ class WorldOfObjects<world>
 	function main(args : Array(String)) : _
 	{		
 		//static owners-as-dominators access (peer-object access)
-		//researcher -> hospital;
-		//hospital -> researcher;
+		researcher -> hospital; 
+		hospital -> researcher;
 		
 		object pr : PatientRecord<this>;
-		//pr = hospital.getDoctorsCopy();
-		pr = hospital.getOriginalPatientRecord();
-						
+		pr = hospital.getOriginalPatientRecord(); //pr will hold the declassified object
+		hospital -> pr; 	//hospital can access the object pr, since hospital is the trusted owner of pr
+		researcher -> pr;	//researcher cannot access the object pr, since no neighbourhood
+		hospital neighbours researcher;	//neighbourhood established
+		researcher -> pr;	//researcher can access the object pr, since researcher is now the neighbour
+		hacker -> pr;		//hacker cannot access pr
 	}
 }
 
